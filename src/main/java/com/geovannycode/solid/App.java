@@ -18,5 +18,13 @@ public class App {
         ));
         var tipo = registry.crear("bonificada", new TipoCuentaContext(150));
         System.out.println("Interés: " + tipo.calcularInteres(1000));
+
+        var cuenta = new Cuenta(1000);
+        new ProcesadorMastercard().procesarPago(cuenta, 100);
+        System.out.println("Saldo: " + cuenta.getSaldo());
+
+        var service = new EvaluacionCreditoService(new EquifaxProveedor());
+        System.out.println("Score: " + service.evaluar("123"));
+
     }
 }
